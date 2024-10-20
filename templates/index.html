@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do App</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <!-- Baner na górze -->
+    <header>
+      <h1 class="banner">Witaj w To Do App! Zadbaj o Twój czas!</h1>
+    </header>
+
+    <!-- Lista zadań -->
+    <main>
+      <ul class="task-list">
+        {% for task in tasks %}
+        <li class="task {{ 'done' if task.done else '' }}">
+          <div class="task-header">
+            <div class="task-title">{{ task.title }}</div>
+            <div
+              class="task-priority"
+              style="color: 
+                        {% if task.priority == 'low' %} black; 
+                        {% elif task.priority == 'medium' %} orange; 
+                        {% else %} red; 
+                        {% endif %}"
+            >
+              {{ task.priority|capitalize }}
+            </div>
+            <div class="task-status">
+              {{ 'Zrobione' if task.done else 'Nie zrobione' }}
+            </div>
+            <div class="task-actions">
+              <a href="/tasks/{{ task.id }}/edit" class="edit-button">Edytuj</a>
+              <form
+                action="/tasks/{{ task.id }}/delete"
+                method="POST"
+                class="delete-form"
+                onsubmit="return confirm('Czy na pewno chcesz usunąć to zadanie?');"
+              >
+                <input type="hidden" name="_method" value="DELETE" />
+                <button type="submit" class="delete-button">Usuń</button>
+              </form>
+            </div>
+          </div>
+          <div class="task-description">
+            <p>{{ task.description }}</p>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <!-- Dodaj zadanie -->
+      <div class="add-task">
+        <a href="/tasks/create" class="add-task-button">Dodaj zadanie</a>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edytuj Zadanie</title>
+    <link rel="stylesheet" href="file:///C:/Users/annak/todo_api/static/styles.css">
+  </head>
+  <body>
+    <h1>Edytuj Zadanie</h1>
+
+    <form action="/tasks/{{ task.id }}" method="POST">
+      <label for="title">Tytuł zadania:</label>
+      <input type="text" id="title" name="title" value="{{ task.title }}" required />
+  
+      <label for="description">Opis zadania:</label>
+      <textarea id="description" name="description" required>{{ task.description }}</textarea>
+  
+      <label for="priority">Priorytet:</label>
+      <select id="priority" name="priority">
+          <option value="low" {% if task.priority == 'low' %}selected{% endif %}>Niski</option>
+          <option value="medium" {% if task.priority == 'medium' %}selected{% endif %}>Średni</option>
+          <option value="high" {% if task.priority == 'high' %}selected{% endif %}>Wysoki</option>
+      </select>
+  
+      <label for="done">Zrobione:</label>
+      <input type="checkbox" id="done" name="done" {% if task.done %}checked{% endif %} />
+  
+      <button type="submit">Zapisz zmiany</button>
+  </form>
+    <a href="{{ url_for('index') }}">Powrót do listy zadań</a>
+  </body>
+</html>

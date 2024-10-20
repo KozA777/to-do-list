@@ -1,0 +1,29 @@
+<ul>
+  {% for task in tasks %}
+  <li class="task {{ 'done' if task.done else '' }}">
+    <div class="task-title">{{ task.title }}</div>
+    <div class="task-description">{{ task.description }}</div>
+    <div class="task-status">
+      {{ 'Zrobione' if task.done else 'Nie zrobione' }}
+    </div>
+    <div
+      class="task-priority"
+      style="color: 
+        {% if task.priority == 'low' %} black; 
+        {% elif task.priority == 'medium' %} orange; 
+        {% else %} red; 
+        {% endif %}"
+    >
+      {{ task.priority|capitalize }}
+    </div>
+    <form
+      action="/tasks/{{ task.id }}/delete"
+      method="POST"
+      onsubmit="return confirm('Czy na pewno chcesz usunąć to zadanie?');"
+    >
+      <input type="hidden" name="_method" value="DELETE" />
+      <button type="submit">Usuń</button>
+    </form>
+  </li>
+  {% endfor %}
+</ul>

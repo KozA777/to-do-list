@@ -1,0 +1,104 @@
+/* Baner na górze */
+.banner {
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Lista zadań */
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task {
+  background-color: #f4f4f4;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.task.done {
+  background-color: #d3f8d3; /* Kolor dla zadań ukończonych */
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.task-priority {
+  font-size: 14px;
+}
+
+.task-status {
+  font-size: 14px;
+  font-style: italic;
+}
+
+.task-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-button, .delete-button {
+  padding: 5px 10px;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #FFA500;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #ff8c00;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+}
+
+.delete-button:hover {
+  background-color: darkred;
+}
+
+/* Opis zadania */
+.task-description {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Przyciski */
+.add-task {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.add-task-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.add-task-button:hover {
+  background-color: #45a049;
+}
